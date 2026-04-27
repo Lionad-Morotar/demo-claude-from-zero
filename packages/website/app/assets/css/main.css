@@ -1,0 +1,154 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/*
+  Tailwind v4 默认会扫描整个 cwd，但显式 @source 会缩小范围。
+  我们需要扫描内容（MDC 中的 utility class）+ app 目录下所有 Vue/TS 组件。
+*/
+@source "../../../content/**/*";
+@source "../../**/*.{vue,ts,js,tsx,jsx,md}";
+
+@theme static {
+  --container-8xl: 90rem;
+  /* 中文优先字体栈：英文用 Public Sans，中文 fallback 到系统字体 */
+  --font-sans: 'Public Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+
+  /* Claude 橙调色板 —— 围绕 Anthropic 品牌主色 #D97757 设计的 50-950 色阶 */
+  --color-orange-50: #FDF7F4;
+  --color-orange-100: #FAEFE8;
+  --color-orange-200: #F2D8C6;
+  --color-orange-300: #ECBAA0;
+  --color-orange-400: #E29479;
+  --color-orange-500: #D97757; /* Claude 主橙 */
+  --color-orange-600: #C8612B;
+  --color-orange-700: #A14A1F;
+  --color-orange-800: #7B3818;
+  --color-orange-900: #5A2A12;
+  --color-orange-950: #2E140A;
+}
+
+:root {
+  --ui-container: var(--container-8xl);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   动效层：Hero 渐变文字 + 路径图谱 + 粒子星空 等 overdrive 效果
+   ───────────────────────────────────────────────────────────────── */
+
+/* @property 让 CSS 能对自定义属性做类型化插值（普通 var 是 string 不能动画） */
+@property --grad-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --grad-shift {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+
+/* Hero「Claude Code」文字：环形流动渐变 */
+.text-gradient-flow {
+  background: conic-gradient(
+    from var(--grad-angle),
+    var(--color-orange-500),
+    var(--color-orange-300),
+    var(--color-orange-600),
+    var(--color-orange-400),
+    var(--color-orange-500)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: grad-rotate 8s linear infinite;
+  /* 防 conic-gradient 边缘锯齿 */
+  display: inline-block;
+  padding: 0 0.05em;
+  margin: 0 -0.05em;
+}
+
+@keyframes grad-rotate {
+  to { --grad-angle: 360deg; }
+}
+
+/* 章节卡片进场动画——绑定 IntersectionObserver 类切换 */
+.chapter-card {
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.chapter-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* SVG 路径绘制动画——dashoffset 由 JS 绑定 scroll progress */
+.chapter-path-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  pathLength: 1;
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+/* 卡片磁吸 + 3D 倾斜——CSS only，hover 时启用 */
+.chapter-card-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.chapter-card-tilt:hover {
+  transform: perspective(800px) rotateX(2deg) rotateY(-3deg) translateY(-4px);
+}
+
+/* CTA 区粒子画布占满父容器 */
+.starfield-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 强制移除 CTA 卡片的所有 ring/border/shadow —— u-page-c-t-a 默认带 ring-default，在浅色背景下非常突兀 */
+.cta-clean,
+.cta-clean[class*="ring"] {
+  --tw-ring-offset-width: 0px !important;
+  --tw-ring-width: 0px !important;
+  --tw-ring-color: transparent !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  --tw-outline-style: none !important;
+  outline-style: none !important;
+  outline-width: 0px !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* prefers-reduced-motion 兜底：所有动画静默，但视觉不退化 */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-flow {
+    animation: none;
+    background: var(--color-orange-500);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .chapter-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .chapter-path-line {
+    stroke-dashoffset: 0 !important;
+  }
+
+  .chapter-card-tilt:hover {
+    transform: translateY(-2px);
+  }
+}
