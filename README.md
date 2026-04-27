@@ -1,6 +1,6 @@
 # Claude From Zero — Demo
 
-**用于演示的项目。**
+**用于演示的项目，展示如何通过 Claude 创建一个 Nuxt 网站，没有生产价值，请勿关注**
 
 这是 [Claude From Zero](https://claude-from-zero.dev) 教程站的演示版本，基于 Nuxt 4 + nuxt-content + Nuxt UI 构建，展示中文技术文档站的完整工程实践。
 
