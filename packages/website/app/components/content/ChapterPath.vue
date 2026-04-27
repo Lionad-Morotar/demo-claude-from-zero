@@ -26,7 +26,7 @@ const chapters: Chapter[] = [
   { number: '第 5 章', title: '进阶配置', description: '深度定制 CLAUDE.md、Skills 体系、MCP 协议、Hooks 编排。', icon: 'i-lucide-wrench', to: '/advanced/claude-md' },
   { number: '第 6 章', title: '实战开发', description: '需求架构、脚手架、核心功能、测试质量、部署上线 —— 真实项目全流程。', icon: 'i-lucide-hammer', to: '/practice/requirements-architecture' },
   { number: '第 7 章', title: '心法层', description: 'Prompt 设计、上下文管理、安全边界、Boris Cherny 实战经验。', icon: 'i-lucide-brain', to: '/mindset/prompt-design' },
-  { number: '附录', title: '速查与术语', description: '常用命令速查表、AI 核心术语汇编、资源链接与延伸阅读。', icon: 'i-lucide-paperclip', to: '/appendix/command-cheatsheet' }
+  { number: '附录', title: '速查与术语', description: '常用命令速查表、AI 核心术语汇编、资源链接与延伸阅读。', icon: 'i-lucide-paperclip', to: '/appendix/a.command-cheatsheet' }
 ]
 
 const sectionRef = ref<HTMLElement | null>(null)
