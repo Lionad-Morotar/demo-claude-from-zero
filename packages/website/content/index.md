@@ -12,7 +12,7 @@ orientation: horizontal
 :hero-background
 
 #title
-从零开始掌握 [Claude Code]{.text-gradient-flow}。
+从零开始掌握 [Claude Code]{.text-gradient-flow}
 
 #description
 一本面向中文开发者的 AI 编程完全指南。覆盖认识、安装、上手、核心功能、进阶配置、实战开发与心法层 —— 把 Claude Code 真正变成你日常工作的一部分。
@@ -63,7 +63,7 @@ orientation: horizontal
 
 ::u-page-section{class="dark:bg-neutral-950"}
 #title
-七章一附录 · 从认知到实战
+完整七章+附录 · 从认知到实战
 
 #description
 本书按照学习路径划分为七章，外加一份附录速查。每一章都是独立的知识闭环，也可以按顺序读完构建完整图景。

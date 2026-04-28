@@ -20,7 +20,7 @@ interface Chapter {
 // 全书章节，硬编码以保证一致性
 const chapters: Chapter[] = [
   { number: '第 1 章', title: '认识 Claude Code', description: 'Claude Code 是什么、与竞品的本质区别、生态全景、底层概率模型与 Agentic Loop。', icon: 'i-lucide-rocket', to: '/intro/what-is-claude-code' },
-  { number: '第 2 章', title: '安装与配置', description: '系统要求、登录认证、选择适合自己的交互界面（CLI / IDE / Web）。', icon: 'i-lucide-settings', to: '/setup/system-requirements' },
+  { number: '第 2 章', title: '安装与配置', description: '系统要求、登录认证、交互界面选择、Coding Plan 国产 AI 订阅接入。', icon: 'i-lucide-settings', to: '/setup/system-requirements' },
   { number: '第 3 章', title: '快速上手', description: '从启动到读懂代码库，再到完成第一个有意义的修改 —— 三步建立信心。', icon: 'i-lucide-hand', to: '/quickstart/startup' },
   { number: '第 4 章', title: '核心功能', description: '代码扫描、编辑与生成、测试与调试、Git 工作流、工具链整合。', icon: 'i-lucide-laptop', to: '/core-features/codebase-scan' },
   { number: '第 5 章', title: '进阶配置', description: '深度定制 CLAUDE.md、Skills 体系、MCP 协议、Hooks 编排。', icon: 'i-lucide-wrench', to: '/advanced/claude-md' },
