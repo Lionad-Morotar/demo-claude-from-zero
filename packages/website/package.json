@@ -1,5 +1,5 @@
 {
-  "name": "claude-from-zero-website",
+  "name": "demo-claude-from-zero-website",
   "private": true,
   "type": "module",
   "scripts": {

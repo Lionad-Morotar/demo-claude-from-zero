@@ -33,7 +33,7 @@ orientation: horizontal
   color: neutral
   variant: outline
   size: xl
-  to: https://github.com/Lionad-Morotar/claude-from-zero
+  to: https://github.com/Lionad-Morotar/demo-claude-from-zero
   target: _blank
   ---
   在 GitHub 查看
@@ -167,7 +167,7 @@ orientation: horizontal
         to: '/intro/what-is-claude-code'
         trailingIcon: i-lucide-arrow-right
       - label: 在 GitHub 查看源码
-        to: 'https://github.com/Lionad-Morotar/claude-from-zero'
+        to: 'https://github.com/Lionad-Morotar/demo-claude-from-zero'
         target: _blank
         variant: subtle
         icon: i-simple-icons-github
